@@ -14,16 +14,7 @@ class App extends Component {
   onClickBtn() {
     console.log("Submit button has been clicked!");
 
-    // Read current task array from the state.
-    const currentTaskArray = this.state.taskArray;
-    const inputTextboxValue = document.querySelector("[data-input-textbox]").value;
-    // Push the current input textbox value into the current task array.
-    currentTaskArray.push(inputTextboxValue);
-    // Assign the state to current task array.
-    this.setState({
-      taskArray: currentTaskArray,
-    })
-    console.log(`Task aray ${this.state.taskArray}`);
+    this.setState({ taskArray: [...this.state.taskArray, document.querySelector("[data-input-textbox]").value] })
   }
 
   render() {
