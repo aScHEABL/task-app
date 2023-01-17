@@ -1,15 +1,18 @@
-import React, {Component } from "react";
+import React, { Component } from "react";
 
-class MyComponent extends Component {
+class Overview extends Component {
     constructor(props) {
-      
+      super(props);
     }
 
     render() {
         return (
-            <div>
-
-            </div>
+            <ul>
+                {this.props.taskArray.map((task) => <li>{task}</li>)}
+            </ul>
         )
     }
 }
+
+
+export default Overview;
