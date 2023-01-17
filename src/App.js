@@ -22,7 +22,7 @@ class App extends Component {
     return (
       <div className="App">
         <form>
-          <label for="task">Add your task here:</label>
+          <label htmlFor="task">Add your task here:</label>
           <br />
           <input name="task" data-input-textbox></input>
           <button type="button" data-submit-btn onClick={this.onClickBtn}>Submit</button>
