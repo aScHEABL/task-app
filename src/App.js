@@ -1,35 +1,49 @@
-import React,{ Component } from "react";
-import Overview from "./components/Overview";
+import React, { Component } from "react";
+import Overview from "./components/Overview"
 
 class App extends Component {
   constructor(props) {
     super(props);
 
-    this.onClickBtn = this.onClickBtn.bind(this);
-
     this.state = {
-      taskArray: [],
+      tasks: [],
+      inputValue: "",
     }
   }
 
-  onClickBtn() {
-    console.log("Submit button has been clicked!");
 
-    this.setState({ taskArray: [...this.state.taskArray, document.querySelector("[data-input-textbox]").value] })
+  
+  handleChange = (e) => {
+    this.setState({
+      inputValue: e.target.value,
+    })
   }
-
+  
+  onSubmitTask = (e) => {
+    e.preventDefault();
+    this.setState({
+      tasks: [...this.state.tasks, this.state.inputValue],
+      inputValue: "",
+    })
+  }
   render() {
+    const { inputValue, tasks } = this.state;
     return (
-      <div className="App">
-        <form>
-          <label htmlFor="task">Add your task here:</label>
+      <div>
+      <form onSubmit={this.onSubmitTask}>
+          <label htmlFor="taskInput">Enter task</label>
           <br />
-          <input name="task" data-input-textbox></input>
-          <button type="button" data-submit-btn onClick={this.onClickBtn}>Submit</button>
-          <Overview taskArray={this.state.taskArray} />
+          <input 
+          name="taskInput" 
+          onChange={this.handleChange} 
+          value={inputValue} 
+          type="text"
+          data-task-input />
+          <button type="submit">Submit</button>
         </form>
+        <Overview tasks={tasks} />
       </div>
-    );
+    )
   }
 }
 
