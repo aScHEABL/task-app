@@ -9,7 +9,7 @@ class Overview extends Component {
     render() {
         return (
             <ul>
-                {this.props.tasks.map((task) => <li key={uniqid()}>{task}</li>)}
+                
             </ul>
         )
     }
