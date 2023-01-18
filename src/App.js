@@ -6,7 +6,6 @@ class App extends Component {
     super(props);
 
     this.state = {
-      order: 1,
       tasks: [],
       inputValue: "",
     }
@@ -23,13 +22,12 @@ class App extends Component {
   onSubmitTask = (e) => {
     e.preventDefault();
     this.setState({
-      order: this.state.order + 1,
       tasks: [...this.state.tasks, this.state.inputValue],
       inputValue: "",
     })
   }
   render() {
-    const { order, tasks, inputValue } = this.state;
+    const { tasks, inputValue } = this.state;
     return (
       <div>
       <form onSubmit={this.onSubmitTask}>
@@ -43,7 +41,7 @@ class App extends Component {
           data-task-input />
           <button type="submit">Submit</button>
         </form>
-        <Overview { ...{order, tasks, inputValue} } />
+        <Overview tasks={tasks} />
       </div>
     )
   }
